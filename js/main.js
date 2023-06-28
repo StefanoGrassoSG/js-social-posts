@@ -98,8 +98,9 @@ const like = document.querySelectorAll('.like-button')
 console.log(like)
 for (let index = 0; index < like.length; index++) {
     like[index].addEventListener('click',
-    function(){
-        console.log('cliccato')
+    function(event){
+        event.preventDefault();
+        
     })
     
 }
