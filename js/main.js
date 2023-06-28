@@ -93,11 +93,13 @@ posts.forEach(element => {
             </div>            
         </div>
     `
+ 
 });
 
 
 const like = document.querySelectorAll('.like-button')
 const allCounter = document.querySelectorAll('.js-likes-counter')
+
 
 const likedPostsId = [];
 console.log(likedPostsId)
@@ -106,22 +108,21 @@ for (let index = 0; index < like.length; index++) {
     function(event){
         event.preventDefault();
         
-        const idCounterButton = posts[index].id;
-
-
-        console.log(posts[index].likes)
-        
         if(!like[index].classList.contains('like-button--liked')) {
             posts[index].likes++
             like[index].classList.add('like-button--liked')
             allCounter[index].innerHTML = posts[index].likes;
             likedPostsId.push(posts[index].id)
         }
+
+        else if(like[index].classList.contains('like-button--liked')) {
+            posts[index].likes--
+            like[index].classList.remove('like-button--liked')
+            allCounter[index].innerHTML = posts[index].likes;
+        }
         console.log(likedPostsId)
     })
+   
 }
-
-
-
 
 
