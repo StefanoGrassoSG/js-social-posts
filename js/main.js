@@ -57,6 +57,8 @@ const posts = [
 ];
 
 const postContainer = document.querySelector('.posts-list')
+
+
 posts.forEach(element => {
     postContainer.innerHTML += `
     
@@ -79,13 +81,13 @@ posts.forEach(element => {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="#" data-postid="${element.id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${element.likes}</b> persone
+                        Piace a <b id="like-counter-${element.id}" class="js-likes-counter">${element.likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -95,6 +97,7 @@ posts.forEach(element => {
 
 
 const like = document.querySelectorAll('.like-button')
+const allCounter = document.querySelectorAll('.js-likes-counter')
 
 
 for (let index = 0; index < like.length; index++) {
@@ -102,14 +105,18 @@ for (let index = 0; index < like.length; index++) {
     function(event){
         event.preventDefault();
         
-        console.log(posts[0].likes)
+        const idCounterButton = posts[index].id;
+
+
+        console.log(posts[index].likes)
         
         if(!like[index].classList.contains('like-button--liked')) {
-            posts[0].likes++
+            posts[index].likes++
             like[index].classList.add('like-button--liked')
+            allCounter[index].innerHTML = posts[index].likes;
         }
        
-        console.log(posts[0].likes)
+       
     })
     
 }
