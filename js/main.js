@@ -99,7 +99,8 @@ posts.forEach(element => {
 const like = document.querySelectorAll('.like-button')
 const allCounter = document.querySelectorAll('.js-likes-counter')
 
-
+const likedPostsId = [];
+console.log(likedPostsId)
 for (let index = 0; index < like.length; index++) {
     like[index].addEventListener('click',
     function(event){
@@ -114,9 +115,13 @@ for (let index = 0; index < like.length; index++) {
             posts[index].likes++
             like[index].classList.add('like-button--liked')
             allCounter[index].innerHTML = posts[index].likes;
+            likedPostsId.push(posts[index].id)
         }
-       
-       
+        console.log(likedPostsId)
     })
-    
 }
+
+
+
+
+
