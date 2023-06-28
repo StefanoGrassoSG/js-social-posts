@@ -95,12 +95,21 @@ posts.forEach(element => {
 
 
 const like = document.querySelectorAll('.like-button')
-console.log(like)
+
+
 for (let index = 0; index < like.length; index++) {
     like[index].addEventListener('click',
     function(event){
         event.preventDefault();
         
+        console.log(posts[0].likes)
+        
+        if(!like[index].classList.contains('like-button--liked')) {
+            posts[0].likes++
+            like[index].classList.add('like-button--liked')
+        }
+       
+        console.log(posts[0].likes)
     })
     
 }
