@@ -119,7 +119,11 @@ for (let index = 0; index < like.length; index++) {
             posts[index].likes--
             like[index].classList.remove('like-button--liked')
             allCounter[index].innerHTML = posts[index].likes;
-            likedPostsId.splice(posts[index].id, 1)
+            const i = likedPostsId.indexOf(posts[index].id);
+            if (i > -1) { // only splice array when item is found
+            likedPostsId.splice(i, 1); // 2nd parameter means remove one item only
+            }
+
         }
         console.log(likedPostsId)
     })
