@@ -119,6 +119,7 @@ for (let index = 0; index < like.length; index++) {
             posts[index].likes--
             like[index].classList.remove('like-button--liked')
             allCounter[index].innerHTML = posts[index].likes;
+            likedPostsId.splice(posts[index].id, 1)
         }
         console.log(likedPostsId)
     })
