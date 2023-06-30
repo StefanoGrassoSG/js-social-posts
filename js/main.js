@@ -68,7 +68,7 @@ const postElements = posts.map(element => {
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${element.author.name}</div>
-                        <div class="post-meta__time">${element.created}</div>
+                        <div class="post-meta__time">${formatDate(element.created)}</div>
                     </div>                    
                 </div>
             </div>
@@ -94,7 +94,7 @@ const postElements = posts.map(element => {
   });
   
   postContainer.innerHTML = postElements.join('');
-  
+
 const like = document.querySelectorAll('.like-button')
 const allCounter = document.querySelectorAll('.js-likes-counter')
 
@@ -127,5 +127,14 @@ for (let index = 0; index < like.length; index++) {
     })
    
 }
+
+//FUNCTIONS 
+
+function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, options);
+  }
+  
 
 
