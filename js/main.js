@@ -58,11 +58,9 @@ const posts = [
 
 const postContainer = document.querySelector('.posts-list')
 
-
-posts.forEach(element => {
-    postContainer.innerHTML += `
-    
-    <div class="post">
+const postElements = posts.map(element => {
+    return `
+      <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
@@ -90,13 +88,13 @@ posts.forEach(element => {
                         Piace a <b id="like-counter-${element.id}" class="js-likes-counter">${element.likes}</b> persone
                     </div>
                 </div> 
-            </div>            
-        </div>
-    `
- 
-});
-
-
+            </div>    
+      </div>
+    `;
+  });
+  
+  postContainer.innerHTML = postElements.join('');
+  
 const like = document.querySelectorAll('.like-button')
 const allCounter = document.querySelectorAll('.js-likes-counter')
 
